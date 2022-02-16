@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+
+  unbound:
+    image: haxwithaxe/unbound-dot:cloudflare
+    build: 
+      context: .
+      args:
+        provider: cloudflare
+        stack: ipv4
+    ports:
+      - "5353:53"
+      - "5353:53/udp"
