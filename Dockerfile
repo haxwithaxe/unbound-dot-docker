@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bullseye-20220125-slim 
 
 # Select the DOT provider.
 # Options are "cloudflare", "quad9", or "google".
