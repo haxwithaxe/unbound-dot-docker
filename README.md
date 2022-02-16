@@ -2,7 +2,7 @@
 This image just acts as a DoT (DNS over TLS) forwarding resolver without any extra configuration. It is intended to be used with Pi-Hole.
 
 # Build
-`docker-compose build` or docker-compose build --build-arg provider=<provider> --build-arg stack=<stack>`. The default provider is `cloudflare` and the default stack is `ipv4`.
+`docker-compose build` or `docker-compose build --build-arg provider=<provider> --build-arg stack=<stack>`. The default provider is `cloudflare` and the default stack is `ipv4`.
 
 ## Stacks
 ***Currently only the `ipv4` stack has been tested***, but there are configs for `ipv6` and `dualstack` as well.
