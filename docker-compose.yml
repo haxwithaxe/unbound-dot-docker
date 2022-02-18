@@ -3,7 +3,7 @@ version: "2"
 services:
 
   unbound:
-    image: haxwithaxe/unbound-dot:cloudflare
+    image: haxwithaxe/unbound-dot:0.1-cloudflare
     build: 
       context: .
       args:
