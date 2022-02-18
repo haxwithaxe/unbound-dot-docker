@@ -2,7 +2,7 @@
 This set of images each act as a DoT (DNS over TLS) forwarding resolver without any extra configuration. It is intended to be used with Pi-Hole.
 
 # Composition
-This set of images is intended to be used in composition with Pi-Hole. See [this](https://github.com/haxwithaxe/pi-hole-docker) implementation for details.
+This set of images is intended to be used in composition with Pi-Hole. See the included `docker-compose.yml` for the implementation.
 
 # Run
 To run it on its own `docker run -p 53:53 -p 53:53/udp haxwithaxe/unbound-dot:latest`. Then point your DNS client at it and enjoy. For example run `dig @127.0.0.1 one.one.one.one` on the host machine.

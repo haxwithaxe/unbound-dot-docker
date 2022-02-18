@@ -1,14 +1,38 @@
 version: "2"
 
 services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      #- "67:67/udp"  # Required for DHCP
+      - "80:80/tcp"
+    networks:
+      default:
+        ipv4_address: 172.31.53.3
+    environment:
+      TZ: "America/New_York"
+      PIHOLE_DNS_: 172.31.53.2
+      WEBPASSWORD_FILE: /var/lib/pihole/webpassword
+    volumes:
+      - "/var/lib/pihole/etc-pihole:/etc/pihole"
+      - "/var/lib/pihole/etc-dnsmasq.d:/etc/dnsmasq.d"
+    #cap_add:  # Required for DHCP
+    #  - NET_ADMIN
+    restart: unless-stopped
 
   unbound:
-    image: haxwithaxe/unbound-dot:0.1-cloudflare
-    build: 
-      context: .
-      args:
-        provider: cloudflare
-        stack: ipv4
-    ports:
-      - "5353:53"
-      - "5353:53/udp"
+    image: haxwithaxe/unbound-dot:latest
+    networks:
+      default:
+        ipv4_address: 172.31.53.2
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.31.53.0/24
+        gateway: 172.31.53.1
