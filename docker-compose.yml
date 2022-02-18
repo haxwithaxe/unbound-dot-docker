@@ -15,10 +15,10 @@ services:
     environment:
       TZ: "America/New_York"
       PIHOLE_DNS_: 172.31.53.2
-      WEBPASSWORD_FILE: /var/lib/pihole/webpassword
+      WEBPASSWORD_FILE: ./webpassword
     volumes:
-      - "/var/lib/pihole/etc-pihole:/etc/pihole"
-      - "/var/lib/pihole/etc-dnsmasq.d:/etc/dnsmasq.d"
+      - "./etc-pihole:/etc/pihole"
+      - "./etc-dnsmasq.d:/etc/dnsmasq.d"
     #cap_add:  # Required for DHCP
     #  - NET_ADMIN
     restart: unless-stopped
